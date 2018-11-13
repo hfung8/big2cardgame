@@ -55,11 +55,15 @@ function render() {
   var hand = deck.slice(0,7);
   //console.log("hand of cards", hand);
   var numSpans = [];
+  var suitSpans = [];
   var sectArray = [];
   //  create a for loop to set the value and color attributes to the hand
   var arrayOfHandValue = [];
+  var arrayOfSuitValue = [];
   for (var j = 0; j < hand.length; j++) {
     var handValue = hand[j].value;
+    var suitValue = hand[j].suit;
+    arrayOfSuitValue.push(suitValue);
     arrayOfHandValue.push(handValue);
   };
   //console.log("arrayOfHandValue", arrayOfHandValue);
@@ -67,10 +71,17 @@ function render() {
   for ( var a = 0; a < arrayOfHandValue.length; a++) {
     var span = document.createElement("span");
     numSpans.push(span);
-    span.setAttribute("data-value", arrayOfHandValue[a]);
+    span.innerHTML = arrayOfHandValue[a];
     span.setAttribute("class", "cards");
   };
-  // console.log(numSpans)
+  // create a separate value for the suit value and set it to an innerHTML for the span tag 
+  for ( var p = 0; p < arrayOfSuitValue.length; p++) {
+    var span = document.createElement("span");
+    suitSpans.push(span);
+    span.innerHTML = arrayOfSuitValue[p];
+  }
+  console.log(suitSpans[0]);
+  console.log(numSpans)
   // numSpans.forEach(function(item){
   //   console.log(item);
   // })
@@ -83,16 +94,70 @@ function render() {
   // sectArray has the array of sections
   // console.log("SectArray", sectArray);
   // append sectArray to a div in the document body
-  var div = document.createElement("div");
-    div.appendChild(sectArray[0]);
-    div.appendChild(sectArray[1]);
-    div.appendChild(sectArray[2]);
-    div.appendChild(sectArray[3]);
-    div.appendChild(sectArray[4]);
-    div.appendChild(sectArray[5]);
-    div.appendChild(sectArray[6]);
+var div= document.createElement("div");
+var value = document.createElement("div");
+var suit = document.createElement("div");
+suit.setAttribute("class", "suitValue");
+// div.setAttribute("class", "div-elem");
+// divOne = suitSpans[0];
+for ( var i = 0; i < 7; i++) {
+  var suitAndValue = suitSpans.concat(sectArray);
+}
+console.log(suitAndValue);
+
+// var suitAndValue = suitSpans.concat(sectArray);
+  var firstSuitValue = suitAndValue[0];
+  var secondSuitValue = suitAndValue[1];
+  var thirdSuitValue = suitAndValue[2];
+  var fourthSuitValue = suitAndValue[3];
+  var fifthSuitValue = suitAndValue[4];
+  var sixthSuitValue = suitAndValue[5];
+  var seventhSuitValue = suitAndValue[6];
+
+  var cardSuitOne = document.createElement("div");
+  var cardSuitTwo = document.createElement("div");
+  var cardSuitThree = document.createElement("div");
+  var cardSuitFour = document.createElement("div");
+  var cardSuitFive = document.createElement("div");
+  var cardSuitSix = document.createElement("div");
+  var cardSuitSeven = document.createElement("div");
+
+  cardSuitOne.classList.add("cardSuitOne");
+  cardSuitTwo.classList.add("cardSuitTwo");
+  cardSuitThree.classList.add("cardSuitThree");
+  cardSuitFour.classList.add("cardSuitFour");
+  cardSuitFive.classList.add("cardSuitFive");
+  cardSuitSix.classList.add("cardSuitSix");
+  cardSuitSeven.classList.add("cardSuitSeven");
+
+  cardSuitOne.appendChild(firstSuitValue);
+  cardSuitTwo.appendChild(secondSuitValue);
+  cardSuitThree.appendChild(thirdSuitValue);
+  cardSuitFour.appendChild(fourthSuitValue);
+  cardSuitFive.appendChild(fifthSuitValue);
+  cardSuitSix.appendChild(sixthSuitValue);
+  cardSuitSeven.appendChild(seventhSuitValue);
+
+  suit.appendChild(cardSuitOne);
+  suit.appendChild(suitAndValue[7]);
+  suit.appendChild(cardSuitTwo);
+  suit.appendChild(suitAndValue[8]);
+  suit.appendChild(cardSuitThree);
+  suit.appendChild(suitAndValue[9]);
+  suit.appendChild(cardSuitFour);
+  suit.appendChild(suitAndValue[10]);
+  suit.appendChild(cardSuitFive);
+  suit.appendChild(suitAndValue[11]);
+  suit.appendChild(cardSuitSix);
+  suit.appendChild(suitAndValue[12]);
+  suit.appendChild(cardSuitSeven);
+  suit.appendChild(suitAndValue[13]);
+  div.appendChild(suit);
+  suit.classList.add("suits");
+  console.log(suit);
   document.body.appendChild(div);
 }
+
 
 start();
 render();

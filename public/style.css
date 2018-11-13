@@ -37,7 +37,7 @@ footer {
 
 # sourceMappingURL=style.css.map */
 
-.cards{
+.cards {
   width: 125px;
   height: 150px;
   border-color: black;
@@ -78,4 +78,21 @@ footer {
   bottom: -50px;
   left: 80%;
   position: relative; 
+}
+
+span {
+  background-color: yellow;
+  content: attr(data-value);
+}
+
+/* .suits {
+  margin-left: 120px;
+  position: relative; 
+  top: 155px;
+} */
+
+.cardSuitOne, .cardSuitTwo, .cardSuitThree, .cardSuitFour, .cardSuitFive, .cardSuitSix, .cardSuitSeven {
+  margin-left: 120px;
+  position: relative; 
+  top: 155px; 
 }
