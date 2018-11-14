@@ -1,13 +1,19 @@
-window.onload = function getStarted() {
+window.onload = function() {
 // create a get deck function to output a deck of cards
 // getDeck will return an array
-function GetDeck() {
-  var arr = [];
-  var start = 0;
-  var end = 52;
-  var suit = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
-  this.createSuit = function() {
-  for (var i = start; i < end; i++) {
+class GetDeck {
+
+  constructor(arr, start,end,suit){
+  this.arr = [];
+  this.start = 0;
+  this.end = 52;
+  this.suit = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+  }
+
+  createSuit() {
+  
+
+  for (var i = this.start; i < this.end; i++) {
     //arr.push(start++);
     var value = (i % 13) + 1;
     if (value === 1) {
@@ -19,12 +25,12 @@ function GetDeck() {
     } else if (value === 13) {
       value = "K";
     }
-    arr.push({
+    this.arr.push({
     	value: value,
-      suit: suit[Math.floor(i/13)]
+      suit: this.suit[Math.floor(i/13)]
     });
   }
-  return arr;
+  return this.arr;
   }
 };
 
