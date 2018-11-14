@@ -37,7 +37,7 @@ function shuffleDeck(arr) {
   return array;
 }
 
-// run the functions together in a function 
+// run the functions together in a function
 function start() {
   let deck = getDeck();
   deck = shuffleDeck(deck);
