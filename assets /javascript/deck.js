@@ -1,11 +1,12 @@
 window.onload = function getStarted() {
 // create a get deck function to output a deck of cards
 // getDeck will return an array
-function getDeck() {
+function GetDeck() {
   var arr = [];
   var start = 0;
   var end = 52;
   var suit = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+  this.createSuit = function() {
   for (var i = start; i < end; i++) {
     //arr.push(start++);
     var value = (i % 13) + 1;
@@ -24,11 +25,12 @@ function getDeck() {
     });
   }
   return arr;
+  }
 };
 
 // create a shuffle deck function
 // shuffleDeck will return an array
-function shuffleDeck(arr) {
+function shuffle(arr) {
   var array = [];
   while (arr.length){
     var randomIndex = Math.floor(Math.random()*arr.length);
@@ -38,31 +40,35 @@ function shuffleDeck(arr) {
 }
 
 // run the functions together in a function
-function start() {
-  let deck = getDeck();
-  deck = shuffleDeck(deck);
-//console.log(deck);
-  let hand = deck.slice(0,7);
-  // console.log(hand);
+function Start() {
+  this.getNewStartDeck = function() {
+  let deck = new GetDeck();
+  var playDeck = deck.createSuit();
+  console.log(playDeck);
+  var shuffledDeck = shuffle(playDeck);
+  console.log(deck);
+  var hand = shuffledDeck.slice(0,7);
+  console.log(hand);
+  return hand; 
+  }
 }
 // an array of objects rather than an array of strings
 // each array of objects has a suit and a value assigned to it
 
 // create a function that takes in the array and displays it to the dom for rendering purposes
 function render() {
-  var deck = getDeck();
-  deck = shuffleDeck(deck);
-  var hand = deck.slice(0,7);
-  //console.log("hand of cards", hand);
+  let deck = new Start();
+  var playDeck = deck.getNewStartDeck();
+  console.log("hand of cards", playDeck);
   var numSpans = [];
   var suitSpans = [];
   var sectArray = [];
   //  create a for loop to set the value and color attributes to the hand
   var arrayOfHandValue = [];
   var arrayOfSuitValue = [];
-  for (var j = 0; j < hand.length; j++) {
-    var handValue = hand[j].value;
-    var suitValue = hand[j].suit;
+  for (var j = 0; j < playDeck.length; j++) {
+    var handValue = playDeck[j].value;
+    var suitValue = playDeck[j].suit;
     arrayOfSuitValue.push(suitValue);
     arrayOfHandValue.push(handValue);
   };
@@ -159,6 +165,6 @@ console.log(suitAndValue);
 }
 
 
-start();
+// start();
 render();
 }
