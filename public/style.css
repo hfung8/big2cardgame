@@ -40,6 +40,10 @@ footer {
 .cards {
   width: 125px;
   height: 150px;
+  /* width: 40px;
+  height: 60px; */
+  border-radius: 4px; 
+  box-shadow: 1px 1px 2px grey;
   border-color: black;
   border-style: solid;
   border-width: medium;
@@ -81,8 +85,9 @@ footer {
 }
 
 span {
-  background-color: yellow;
+  /* background-color: yellow; */
   content: attr(data-value);
+  background: radial-gradient(beige 75%, bisque)
 }
 
 /* .suits {
